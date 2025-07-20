@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { UserModalProps, UserData } from '@/interfaces';
 
-const UserModal: React.FC<UserModalProps> = ({ isOpen, onClose, onAddUser }) => {
+const UserModal: React.FC<UserModalProps> = ({ isOpen, onClose, onSubmit }) => {
   const [formData, setFormData] = useState<UserData>({
     id: Date.now(),
     name: '',
@@ -56,7 +56,7 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onClose, onAddUser }) => 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onAddUser(formData);
+    onSubmit(formData);
     onClose();
   };
 
@@ -77,7 +77,7 @@ const UserModal: React.FC<UserModalProps> = ({ isOpen, onClose, onAddUser }) => 
           <input name="address.street" onChange={handleChange} placeholder="Street" className="border p-2" />
           <input name="address.city" onChange={handleChange} placeholder="City" className="border p-2" />
 
-          {/* Company */}
+         
           <input name="company.name" onChange={handleChange} placeholder="Company Name" className="border p-2" />
           <input name="company.catchPhrase" onChange={handleChange} placeholder="Catch Phrase" className="border p-2" />
 

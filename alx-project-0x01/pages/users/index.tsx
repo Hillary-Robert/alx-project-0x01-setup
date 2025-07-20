@@ -33,7 +33,7 @@ const Users: React.FC<{ posts: UserData[] }> = ({ posts }) => {
       <UserModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        onAddUser={handleAddUser}
+        onSubmit={handleAddUser}
       />
     </div>
   );
