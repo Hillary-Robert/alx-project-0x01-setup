@@ -38,7 +38,7 @@ export interface User {
 }
 
 
-export interface UserWrapper {
+export interface UserProps {
   user: User;
 }
 

@@ -1,12 +1,11 @@
-// components/common/UserCard.tsx
 import React from 'react';
 import { UserProps } from '@/interfaces';
 
-interface UserWrapper {
+interface UserCardProps {
   user: UserProps;
 }
 
-const UserCard: React.FC<UserWrapper> = ({ user }) => {
+const UserCard: React.FC<UserCardProps> = ({ user }) => {
   const { name, username, email, phone, website, company, address } = user;
 
   return (
