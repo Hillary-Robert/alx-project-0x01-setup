@@ -1,5 +1,21 @@
 import React from 'react';
-import { UserProps } from '@/interfaces';
+
+type UserProps = {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  phone: string;
+  website: string;
+  address: {
+    city: string;
+    street: string;
+  };
+  company: {
+    name: string;
+  };
+};
+
 
 const UserCard: React.FC<{ user: UserProps }> = ({ user }) => {
   return (
