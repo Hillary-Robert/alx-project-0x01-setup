@@ -1,11 +1,7 @@
 import React from 'react';
 import { UserProps } from '@/interfaces';
 
-interface UserCardProps {
-  user: UserProps;
-}
-
-const UserCard: React.FC<UserCardProps> = ({ user }) => {
+const UserCard: React.FC<UserProps> = ({ user }) => {
   const { name, username, email, phone, website, company, address } = user;
 
   return (
