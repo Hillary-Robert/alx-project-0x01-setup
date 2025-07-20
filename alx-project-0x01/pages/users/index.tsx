@@ -1,12 +1,15 @@
-
 import React, { useState } from 'react';
 import { UserProps } from '@/interfaces';
 import UserCard from '@/components/common/UserCard';
 import UserModal from '@/components/common/UserModal';
 
-const Users: React.FC<{ posts: UserProps[] }> = ({ posts }) => {
-  const [users, setUsers] = useState<UserProps[]>(posts);
+interface UsersPageProps {
+  posts: UserProps[];
+}
+
+const Users: React.FC<UsersPageProps> = ({ posts }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [users, setUsers] = useState<UserProps[]>(posts);
 
   const handleAddUser = (newUser: UserProps) => {
     setUsers((prev) => [newUser, ...prev]);
@@ -25,7 +28,7 @@ const Users: React.FC<{ posts: UserProps[] }> = ({ posts }) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {users.map((user) => (
+        {posts.map((user) => (
           <UserCard key={user.id} user={user} />
         ))}
       </div>
@@ -40,7 +43,7 @@ const Users: React.FC<{ posts: UserProps[] }> = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
   const posts = await response.json();
 
   return {
