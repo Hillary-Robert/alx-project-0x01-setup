@@ -1,24 +1,24 @@
-import { PostProps } from "@/interfaces"; 
+import { PostData  } from "@/interfaces"; 
 import PostCard from "@/components/common/PostCard";
 import PostModal from "@/components/common/PostModal";
 import Header from "@/components/layout/Header";
 import { useState } from "react";
 
 interface PostsPageProps {
-  posts: PostProps[];
+  posts: PostData[];
 }
 
 const Posts: React.FC<PostsPageProps> = ({ posts }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const [post, setPost] = useState<PostProps | null>(null);
-
-  const handleAddPost = (newPost: PostProps) => {
-    const updatedPost: PostProps = {
+  const [post, setPost] = useState<PostData | null>(null);
+  const handleAddPost = (newPost: PostData) => {
+    const updatedPost: PostData = {
       ...newPost,
       id: posts.length + 1,
     };
     setPost(updatedPost);
   };
+
 
   return (
     <div className="flex flex-col h-screen">
@@ -55,7 +55,7 @@ const Posts: React.FC<PostsPageProps> = ({ posts }) => {
 
 export async function getStaticProps() {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-  const posts: PostProps[] = await response.json();
+  const posts: PostData[] = await response.json();
 
   return {
     props: {
