@@ -1,9 +1,9 @@
-import { PostData  } from "@/interfaces"; 
-import { PostProps  } from "@/interfaces"; 
+import { PostProps, PostData } from "@/interfaces";
 import PostCard from "@/components/common/PostCard";
 import PostModal from "@/components/common/PostModal";
 import Header from "@/components/layout/Header";
 import { useState } from "react";
+
 
 interface PostsPageProps {
   posts: PostProps[];
