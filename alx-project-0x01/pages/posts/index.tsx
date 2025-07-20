@@ -11,13 +11,15 @@ interface PostsPageProps {
 
 const Posts: React.FC<PostsPageProps> = ({ posts }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const [post, setPost] = useState<PostData | null>(null);
+  const [post, setPost] = useState<PostProps[]>(posts); 
+
   const handleAddPost = (newPost: PostData) => {
-    const updatedPost: PostData = {
+    const updatedPost: PostProps = {
       ...newPost,
-      id: posts.length + 1,
+      id: post.length + 1, 
     };
-    setPost(updatedPost);
+    setPost([...post, updatedPost]);
+    setModalOpen(false);
   };
 
 
@@ -37,7 +39,7 @@ const Posts: React.FC<PostsPageProps> = ({ posts }) => {
         <div className="grid grid-cols-3 gap-2">
           {posts.map((post, key) => (
             <PostCard
-              key={key}
+              key={post.id}
               title={post.title}
               body={post.body}
               userId={post.userId}
