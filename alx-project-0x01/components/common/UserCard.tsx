@@ -1,4 +1,5 @@
 import React from 'react';
+import { UserProps } from '@/interfaces';
 
 type UserProps = {
   id: number;
@@ -15,6 +16,8 @@ type UserProps = {
     name: string;
   };
 };
+
+
 
 
 const UserCard: React.FC<{ user: UserProps }> = ({ user }) => {
