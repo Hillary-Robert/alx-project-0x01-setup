@@ -37,3 +37,8 @@ export interface User {
   company: Company;
 }
 
+
+export interface UserProps {
+  user: User;
+}
+

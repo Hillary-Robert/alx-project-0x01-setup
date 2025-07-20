@@ -1,9 +1,6 @@
 import React from 'react';
-import { User } from '@/interfaces';
+import { UserProps } from '@/interfaces';
 
-interface UserProps {
-  user: User;
-}
 
 
 
