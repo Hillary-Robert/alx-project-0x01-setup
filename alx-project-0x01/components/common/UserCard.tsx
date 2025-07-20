@@ -1,10 +1,10 @@
 import React from 'react';
-import { UserProps } from '@/interfaces';
+import { UserWrapper } from '@/interfaces';
 
 
 
 
-const UserCard: React.FC<UserProps> = ({ user }) => {
+const UserCard: React.FC<UserWrapper> = ({ user }) => {
   const { name, username, email, phone, website, company, address } = user;
 
   return (

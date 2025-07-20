@@ -38,7 +38,7 @@ export interface User {
 }
 
 
-export interface UserProps {
+export interface UserWrapper {
   user: User;
 }
 
@@ -57,9 +57,9 @@ export interface PostModalProps {
 
 
 
-// interfaces/index.ts
 
-export interface UserData {
+
+export interface UserProps {
   id: number;
   name: string;
   username: string;
@@ -86,5 +86,5 @@ export interface UserData {
 export interface UserModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (user: UserData) => void;
+  onSubmit: (post: UserProps) => void;
 }
