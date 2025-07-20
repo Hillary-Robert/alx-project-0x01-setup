@@ -1,10 +1,8 @@
-import { PostProps } from "@/interfaces";
-import { PostData } from "@/interfaces";
+import { PostProps, PostData } from "@/interfaces";
 import PostCard from "@/components/common/PostCard";
 import PostModal from "@/components/common/PostModal";
 import Header from "@/components/layout/Header";
 import { useState } from "react";
-
 
 interface PostsPageProps {
   posts: PostProps[];
@@ -12,17 +10,18 @@ interface PostsPageProps {
 
 const Posts: React.FC<PostsPageProps> = ({ posts }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const [post, setPost] = useState<PostProps[]>(posts); 
+  const [post, setPost] = useState<PostData | null>(null);
+  const [postsList, setPostsList] = useState<PostProps[]>(posts);
 
   const handleAddPost = (newPost: PostData) => {
     const updatedPost: PostProps = {
       ...newPost,
-      id: post.length + 1, 
+      id: postsList.length + 1,
     };
-    setPost([...post, updatedPost]);
+    setPost(updatedPost);  
+    setPostsList([...postsList, updatedPost]);
     setModalOpen(false);
   };
-
 
   return (
     <div className="flex flex-col h-screen">
@@ -38,7 +37,7 @@ const Posts: React.FC<PostsPageProps> = ({ posts }) => {
           </button>
         </div>
         <div className="grid grid-cols-3 gap-2">
-          {posts.map((post, key) => (
+          {postsList.map((post) => (
             <PostCard
               key={post.id}
               title={post.title}
